@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --accent-color: #b666d2;
+        --accent-hover: #9b4fa8;
+        --text-color: #2d3436;
+        --bg-color: #ffffff;
+        --border-radius: 12px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #f8f9fa;
+        font-family: "Space Mono", monospace;
+        color: var(--text-color);
+        line-height: 1.6;
+        padding: 2rem;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .empty-state {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: var(--bg-color);
+        border-radius: var(--border-radius);
+        border: 2px solid #e0e0e0;
+        margin: 2rem 0;
+      }
+
+      .empty-state-icon {
+        font-size: 3rem;
+        color: var(--accent-color);
+        margin-bottom: 1.5rem;
+      }
+
+      .empty-state-title {
+        font-size: 1.5rem;
+        color: var(--accent-color);
+        margin-bottom: 1rem;
+      }
+
+      .empty-state-text {
+        color: #666;
+        margin-bottom: 2rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 8px 16px;
+        border-radius: var(--border-radius);
+        border: none;
+        font-family: "Space Mono", monospace;
+        font-size: 14px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary {
+        background-color: var(--accent-color);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: var(--accent-hover);
+      }
+
+      .btn-secondary {
+        background-color: #e0e0e0;
+        color: var(--text-color);
+      }
+
+      .btn-warning {
+        background-color: #ffb6c1;
+        color: var(--text-color);
+      }
+
+      .btn-danger {
+        background-color: #ff7675;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      {% block content %}
+      <div class="empty-state">
+        <div class="empty-state-icon">📝</div>
+        <h2 class="empty-state-title">No Posts Yet</h2>
+        <p class="empty-state-text">
+          Start creating your first post to see it here!
+        </p>
+        <a href="{% url 'post-create' %}" class="btn btn-primary"
+          >Create New Post</a
+        >
+      </div>
+      {% endblock %}
+    </main>
+  </body>
+</html>

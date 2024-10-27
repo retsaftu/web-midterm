@@ -1,0 +1,45 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <article class="post-detail">
+        <h1 class="post-title">{{ object.title }}</h1>
+        <div class="post-meta">Created: {{ object.created_at|date:"F d, Y" }}</div>
+        <div class="post-content">{{ object.content }}</div>
+        <div class="post-actions">
+            <a href="{% url 'post-list' %}" class="btn btn-secondary">Back</a>
+            <a href="{% url 'post-update' object.pk %}" class="btn btn-warning">Edit</a>
+            <a href="{% url 'post-delete' object.pk %}" class="btn btn-danger">Delete</a>
+        </div>
+    </article>
+    <style>
+        .post-detail {
+            background: var(--bg-color);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            max-width: 800px;
+            margin: 2rem auto;
+            border: 2px solid #E0E0E0;
+        }
+
+        .post-title {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+
+        .post-content {
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
+{% endblock content %}

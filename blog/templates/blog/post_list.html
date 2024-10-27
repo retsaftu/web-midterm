@@ -1,0 +1,48 @@
+{% extends "blog/base.html" %} {% block content %}
+<div class="posts-grid">
+  {% for post in object_list %}
+  <article class="post-card">
+    <h2 class="post-title">{{ post.title }}</h2>
+    <p class="post-excerpt">{{ post.content|truncatewords:30 }}</p>
+    <div class="post-actions">
+      <a href="{% url 'post-detail' post.pk %}" class="btn btn-primary">Read</a>
+      <a href="{% url 'post-update' post.pk %}" class="btn btn-warning">Edit</a>
+      <a href="{% url 'post-delete' post.pk %}" class="btn btn-danger"
+        >Delete</a
+      >
+    </div>
+  </article>
+  {% endfor %}
+</div>
+<style>
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+  }
+
+  .post-card {
+    background: var(--bg-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    border: 2px solid #e0e0e0;
+  }
+
+  .post-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+  }
+
+  .post-excerpt {
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .post-actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+</style>
+{% endblock content %}

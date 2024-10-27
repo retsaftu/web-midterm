@@ -1,0 +1,64 @@
+{% extends "blog/base.html" %} {% block content %}
+<div class="delete-container">
+  <div class="delete-card">
+    <h2 class="delete-title">Delete Confirmation</h2>
+    <p class="delete-message">
+      Are you sure you want to delete "<span class="post-title"
+        >{{ object.title }}</span
+      >"?
+    </p>
+    <form method="POST" class="delete-actions">
+      {% csrf_token %}
+      <a href="{% url 'post-detail' object.pk %}" class="btn btn-secondary"
+        >Cancel</a
+      >
+      <button type="submit" class="btn btn-danger">Delete Post</button>
+    </form>
+  </div>
+</div>
+<style>
+  .delete-container {
+    max-width: 500px;
+    margin: 4rem auto;
+  }
+
+  .delete-card {
+    background: var(--bg-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    border: 2px solid #e0e0e0;
+    text-align: center;
+  }
+
+  .delete-title {
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .delete-message {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
+  .delete-message .post-title {
+    color: var(--accent-color);
+    font-weight: bold;
+  }
+
+  .delete-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .btn-danger {
+    background-color: #ff7675;
+    color: white;
+  }
+
+  .btn-danger:hover {
+    background-color: #ff5e5b;
+  }
+</style>
+{% endblock content %}
